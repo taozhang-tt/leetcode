@@ -14,7 +14,7 @@ func TestReverseList(t *testing.T) {
 				2,
 				&ListNode{
 					3,
-					&ListNode{},
+					nil,
 				},
 			},
 		}
