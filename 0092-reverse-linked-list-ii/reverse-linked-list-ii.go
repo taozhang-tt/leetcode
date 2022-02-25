@@ -17,6 +17,7 @@ func reverseBetween(head *ListNode, left int, right int) *ListNode {
 	return virtual.Next
 }
 
+// 翻转链表
 func reverse(head *ListNode) *ListNode {
 	var prev *ListNode
 	for head != nil {
@@ -25,14 +26,13 @@ func reverse(head *ListNode) *ListNode {
 	return prev
 }
 
-// 返还链表的K个节点
-// K <= 节点数
-func reverseK(head *ListNode, K int) *ListNode {
+// 返还链表的k个节点 k <= 节点数
+func reverseK(head *ListNode, k int) *ListNode {
 	var prev *ListNode
 	root := head
-	for K > 0 {
+	for k > 0 {
 		head.Next, prev, head = prev, head, head.Next
-		K--
+		k--
 	}
 	root.Next = head
 	return prev
