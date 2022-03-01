@@ -32,3 +32,16 @@ func middleNode2(head *ListNode) *ListNode {
 	}
 	return slow
 }
+
+// 返回链表中间节点的前一个节点，有两个中间节点时，以后一个为准
+func middleNode3(head *ListNode) *ListNode {
+	prev := &ListNode{Next: &ListNode{Next: head}}
+	slow, fast := prev, prev
+	for fast != nil {
+		if fast.Next == nil {
+			return slow
+		}
+		slow, fast = slow.Next, fast.Next.Next
+	}
+	return slow
+}

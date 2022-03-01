@@ -42,4 +42,19 @@ func Test(t *testing.T) {
 		middle = middleNode2(head)
 		So(middle.Val, ShouldEqual, 2)
 	})
+
+	Convey("Test middleNode3", t, func() {
+
+		head := &ListNode{1, &ListNode{2, nil}}
+		middle := middleNode3(head)
+		So(middle.Val, ShouldEqual, 1)
+
+		head = &ListNode{1, &ListNode{2, &ListNode{3, nil}}}
+		middle = middleNode3(head)
+		So(middle.Val, ShouldEqual, 1)
+
+		head = &ListNode{1, &ListNode{2, &ListNode{3, &ListNode{4, nil}}}}
+		middle = middleNode3(head)
+		So(middle.Val, ShouldEqual, 2)
+	})
 }
