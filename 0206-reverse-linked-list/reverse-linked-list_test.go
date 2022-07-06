@@ -8,27 +8,35 @@ import (
 
 func TestReverseList(t *testing.T) {
 	Convey("TestReverseList", t, func() {
-		var head = &ListNode{
-			1,
-			&ListNode{
-				2,
+		var testCases = []*ListNode{
+			{
+				1,
 				&ListNode{
-					3,
-					nil,
+					2,
+					&ListNode{
+						3,
+						nil,
+					},
 				},
 			},
+			nil,
 		}
 
 		Convey("TestReverseList1", func() {
-			curr := reverseList(head)
-			curr = reverseList(curr)
-			So(head, ShouldResemble, curr)
+			for _, head := range testCases {
+				curr := reverseList(head)
+				curr = reverseList(curr)
+				So(head, ShouldResemble, curr)
+			}
 		})
 
 		Convey("TestReverseList2", func() {
-			curr := reverseList2(head)
-			curr = reverseList2(curr)
-			So(head, ShouldResemble, curr)
+			for _, head := range testCases {
+				curr := reverseList2(head)
+				curr = reverseList2(curr)
+				So(head, ShouldResemble, curr)
+			}
 		})
+
 	})
 }
