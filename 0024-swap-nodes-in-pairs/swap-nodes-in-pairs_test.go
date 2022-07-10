@@ -3,7 +3,6 @@ package swapnodesinpairs
 import (
 	"testing"
 
-	"github.com/davecgh/go-spew/spew"
 	. "github.com/taozhang-tt/spadger/pkg/testing/xconvey"
 )
 
@@ -39,11 +38,8 @@ func TestSwapPairs(t *testing.T) {
 		},
 	}
 	Convey("TestSwapPairs1", t, func() {
-		spew.Dump(head1)
 		curr := swapPairs(head1)
-		spew.Dump(curr)
 		curr = swapPairs(curr)
-		spew.Dump(curr)
 		So(curr, ShouldResemble, head1)
 
 		curr = swapPairs(head2)
