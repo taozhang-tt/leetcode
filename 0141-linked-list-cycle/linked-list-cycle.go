@@ -1,6 +1,7 @@
 package linkedlistcycle
 
 // 141. 环形链表
+// https://leetcode.cn/problems/linked-list-cycle/
 
 type ListNode struct {
 	Val  int
@@ -9,12 +10,12 @@ type ListNode struct {
 
 // set 判重
 func hasCycle(head *ListNode) bool {
-	storage := make(map[*ListNode]bool)
+	set := make(map[*ListNode]struct{})
 	for head != nil {
-		if storage[head] {
+		if _, ok := set[head]; ok {
 			return true
 		} else {
-			storage[head] = true
+			set[head] = struct{}{}
 		}
 		head = head.Next
 	}
@@ -23,12 +24,11 @@ func hasCycle(head *ListNode) bool {
 
 // 快慢指针
 func hasCycle2(head *ListNode) bool {
-	virtual := &ListNode{Next: head}
-	slow, fast := virtual, virtual
-	for fast.Next != nil && fast.Next.Next != nil {
-		slow = slow.Next
-		fast = fast.Next.Next
-		if slow == fast {
+	dumy := &ListNode{Next: head}
+	fast, slow := dumy, dumy
+	for fast != nil && fast.Next != nil {
+		fast, slow = fast.Next.Next, slow.Next
+		if fast == slow {
 			return true
 		}
 	}
