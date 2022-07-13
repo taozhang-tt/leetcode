@@ -24,8 +24,7 @@ func hasCycle(head *ListNode) bool {
 
 // 快慢指针
 func hasCycle2(head *ListNode) bool {
-	dumy := &ListNode{Next: head}
-	fast, slow := dumy, dumy
+	fast, slow := head, head
 	for fast != nil && fast.Next != nil {
 		fast, slow = fast.Next.Next, slow.Next
 		if fast == slow {
